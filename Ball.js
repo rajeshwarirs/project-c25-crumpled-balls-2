@@ -8,6 +8,7 @@ class Ball {
       }
       this.body = Bodies.circle(x, y, diameter, options);
       this.diameter = diameter;
+      this.image = loadImage("paper.png");
     
       
       World.add(world, this.body);
@@ -17,9 +18,9 @@ class Ball {
       
       push();
       translate(pos.x, pos.y);
-      ellipseMode(RADIUS);
-      fill("orange");
-      ellipse(0, 0, this.diameter,this.diameter);
+      imageMode(RADIUS);
+     // fill("orange");
+      image(this.image,0, 0, this.diameter,this.diameter);
       pop();
     }
   };

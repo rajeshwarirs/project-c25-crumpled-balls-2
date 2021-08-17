@@ -4,11 +4,11 @@ const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
 
-var basketWall1,basketWall2,basketWall3,ground;
-var paperBall;
-function preload()
-{
-	
+var dustbin,ground;
+var wall1, wall2,wall3;
+var paper;
+function preload(){
+dustbin=loadImage("dustbingreen.png");
 }
 
 function setup() {
@@ -18,31 +18,33 @@ function setup() {
 	world = engine.world;
 
 ground = new Ground(400,280,800,10);
-basketWall1 = new Dustbin(630,225,20,100);
-basketWall2 = new Dustbin(690,265,100,20);
-basketWall3 = new Dustbin(750,225,20,100);
+ wall1= new Dustbin(630,225,20,100);
+ wall2= new Dustbin(690,265,100,20);
+ wall3= new Dustbin(750,225,20,100);
 
-paperBall = new Ball(200,200,30);
+paper = new Ball(200,200,30);
 	Engine.run(engine);
   
 }
 
 function draw() {
   rectMode(CENTER);
-  background("black");
+  background("white");
   
+  paper.display();
   ground.display();
-  basketWall1.display();
-  basketWall2.display();
-  basketWall3.display();
-  paperBall.display();
+  wall1.display();
+  wall2.display();
+  wall3.display();
 
+  image(dustbin,620,175,140,100);
+  
   drawSprites();
  
 }
 function keyPressed(){
   if(keyCode===UP_ARROW){
-    Body.applyForce(paperBall.body,paperBall.body.position,{x:130,y:-150});
+    Body.applyForce(paper.body,paper.body.position,{x:120,y:-150});
   }
 }
 
